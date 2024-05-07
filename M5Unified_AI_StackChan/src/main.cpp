@@ -47,8 +47,8 @@ std::deque<String> chatHistory;
 #if defined(ARDUINO_M5STACK_Core2)
   // #define SERVO_PIN_X 13  //Core2 PORT C
   // #define SERVO_PIN_Y 14
-  #define SERVO_PIN_X 13  //Core2 PORT A
-  #define SERVO_PIN_Y 14
+  #define SERVO_PIN_X 33  //Core2 PORT A
+  #define SERVO_PIN_Y 32
 #elif defined( ARDUINO_M5STACK_FIRE )
   #define SERVO_PIN_X 21
   #define SERVO_PIN_Y 22
@@ -301,7 +301,7 @@ String chatGpt(String json_string) {
   String response = "";;
   avatar.setExpression(Expression::Doubt);
   avatar.setSpeechText("考え中…");
-  String https_url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" + GEMINI_API_KEY;
+  String https_url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=" + GEMINI_API_KEY;
   String ret = https_post_json(https_url.c_str(), json_string.c_str(), root_ca_google_gemini);
   avatar.setExpression(Expression::Neutral);
   avatar.setSpeechText("");
